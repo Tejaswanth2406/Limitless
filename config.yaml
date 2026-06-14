@@ -1,0 +1,51 @@
+# Limitless — Default Configuration
+
+# ── Field settings ──────────────────────────────────────────────────────────
+field:
+  decay: 0.05           # Rate at which temporal influence decays with distance
+  coupling: 0.1         # Strength of entropy coupling between nodes (lambda)
+  resonance_threshold: 0.1   # Temporal distance below which nodes are resonant
+
+# ── Kernel settings ─────────────────────────────────────────────────────────
+kernel:
+  entropy_smoothing: 0.9   # Alpha for momentum exponential smoothing (alpha)
+  max_queue_depth: 1000    # Maximum events in the kernel queue
+
+# ── Engine settings ─────────────────────────────────────────────────────────
+trajectory:
+  horizon: 5               # Default future steps to project
+  branching_factor: 3      # Alternative futures per step
+  min_probability: 0.01    # Discard trajectories below this probability
+
+entropy:
+  phase_transition_threshold: 0.3   # Min ΔH to flag a phase transition
+
+omega_optimizer:
+  learning_rate: 0.05
+  max_steps: 100
+  tolerance: 1.0e-5
+
+# ── Agent swarm settings ────────────────────────────────────────────────────
+swarm:
+  trajectory_horizon: 5
+  trajectory_branches: 3
+  novelty_threshold: 0.4
+  contradiction_tolerance: 0.05
+
+# ── Logging ─────────────────────────────────────────────────────────────────
+logging:
+  level: INFO              # DEBUG | INFO | WARN | ERROR | CRITICAL
+  color: true
+  timestamps: true
+
+# ── Benchmarks ──────────────────────────────────────────────────────────────
+benchmarks:
+  omega_convergence:
+    passing_threshold: 0.95
+  field_propagation:
+    passing_threshold: 0.30
+  swarm_latency:
+    max_seconds: 2.0
+  entropy_expansion:
+    passing_threshold: 0.90
+    tolerance: 1.0e-6
